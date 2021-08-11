@@ -18,11 +18,24 @@ namespace TheConsoleApp
 
             var waitingTime = new WaitingTime(numbers);
 
-            Console.WriteLine("Enter your appointment number to looking for the wainting time:");
-            var appNumberTextInput = Console.ReadLine();
-            var appNumber = Convert.ToInt32(appNumberTextInput);
-            var appWaitingTime = waitingTime.Find(appNumber);
-            Console.WriteLine(appWaitingTime);
+            Console.WriteLine("Here we go for querying the waiting time.");
+
+            string lookupMore;
+            do
+            {
+                Console.WriteLine("Enter your appointment number to looking for the wainting time:");
+                var appNumberTextInput = Console.ReadLine();
+                var appNumber = Convert.ToInt32(appNumberTextInput);
+                var appWaitingTime = waitingTime.Find(appNumber);
+                Console.WriteLine(appWaitingTime);
+
+                Console.WriteLine();
+                Console.WriteLine("Lookup more waiting time (Y/n)?");
+                var lookupMoreResponse = Console.ReadLine();
+                lookupMore = string.IsNullOrEmpty(lookupMoreResponse) ? "y" : lookupMoreResponse;
+            } while (lookupMore != "n");
+
+            Console.WriteLine("Thank you for joining the challenge.");
         }
     }
 }
